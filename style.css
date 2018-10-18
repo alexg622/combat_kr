@@ -13,23 +13,23 @@ body {
 
 .goku {
   position: absolute;
-  transform: translate(-275%, 25%);
+  transform: translate(-275%, 50%);
 }
 
 .spawn {
   position: absolute;
-  transform: translate(275%, 25%)
+  transform: translate(275%, 50%)
 }
 
 .goku-img {
   object-fit: cover;
-  height: 400px;
+  height: 300px;
   width: 200px;
 }
 
 .spawn-img {
   object-fit: cover;
-  height: 400px;
+  height: 300px;
   width: 200px;
 }
 

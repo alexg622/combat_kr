@@ -71,7 +71,7 @@ const gokuAttack = () => {
     img.style.transform = `translate(${100 + goCords.x - imgCords.x}px)`
     let firing = setInterval(() => {
       let newCords = img.getBoundingClientRect()
-      img.style.transform = `translate(${newCords.x+2}px, ${newY}px)`
+      img.style.transform = `translate(${newCords.x+2}px, ${newY+125}px)`
       if (newCords.x > windowWidth-400) {
         container.removeChild(img)
         clearInterval(firing)
@@ -102,7 +102,7 @@ const spawnAttack = () => {
     img.style.transform = `translate(${spCords.x - imgCords.x - 100}px)`
     let firing = setInterval(() => {
       let newCords = img.getBoundingClientRect()
-      img.style.transform = `translate(${newCords.x-2}px, ${newY}px)`
+      img.style.transform = `translate(${newCords.x-2}px, ${newY+125}px)`
       if (newCords.x < 0) {
         container.removeChild(img)
         clearInterval(firing)
