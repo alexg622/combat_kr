@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+
 }
 .container {
   height: 100vh;
@@ -8,12 +9,20 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: black;
+  /* background: black; */
+  background: url("https://media.giphy.com/media/UEaz2KMsVENyM/source.gif") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
+/* https://thumbs.gfycat.com/FlakyPassionateDuiker-size_restricted.gif */
+/* https://media.giphy.com/media/ctGFLebG1AqK4/giphy.gif */
+/* https://media.giphy.com/media/UEaz2KMsVENyM/source.gif */
 
 .goku {
   position: absolute;
-  transform: translate(-275%, 50%);
+  transform: translate(-175%, 50%);
 }
 
 .spawn {
@@ -22,9 +31,9 @@ body {
 }
 
 .goku-img {
-  object-fit: cover;
+  object-fit: fill;
   height: 300px;
-  width: 200px;
+  width: 300px;
 }
 
 .spawn-img {
@@ -35,4 +44,11 @@ body {
 
 .fireball {
   left: 0px;
+}
+
+.fire-floor {
+  width: 100%;
+  object-fit: cover;
+  transform: translateY(50%);
+  position: absolute;;
 }
