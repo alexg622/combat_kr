@@ -5,44 +5,62 @@ const windowWidth = window.innerWidth
 
 
 
-const moveGoku = () => {
+const moveSpawn = () => {
   window.addEventListener("keydown", e => {
-    let goku = document.querySelector(".goku")
+    let spawn = document.querySelector(".spawn")
     window.e = e
     if(e.keyCode === 37) {
-      let left = goku.offsetLeft
-      goku.style.left = `${left-5}px`
+      let left = spawn.offsetLeft
+      spawn.style.left = `${left-5}px`
     } else if (e.keyCode === 38) {
-      let top = goku.offsetTop
-      goku.style.top = `${top-5}px`
+      let moveTop = spawn.getBoundingClientRect().y - spawnStartCords.y
+      let top = spawn.offsetTop
+      // spawn.style.top = `${top-5}px`
+      jump(spawn)
     } else if (e.keyCode === 39) {
-      let left = goku.offsetLeft
-      goku.style.left = `${left+5}px`
+      let left = spawn.offsetLeft
+      spawn.style.left = `${left+5}px`
     } else if (e.keyCode === 40) {
-      let top = goku.offsetTop
-      goku.style.top = `${top+5}px`
+      let top = spawn.offsetTop
+      spawn.style.top = `${top+5}px`
     } else if (e.keyCode === 32) {
       gokuAttack()
     }
   })
 }
 
-const moveSpawn = () => {
+const jump = (character) => {
+  let counter = 0
+  let inter = setInterval(() => {
+    console.log(counter);
+    let placeTop = character.offsetTop
+    if (counter <= 400) {
+      character.style.top = `${placeTop-1}px`
+    } else if(counter > 400){
+      character.style.top = `${placeTop+1}px`
+    }
+    if (counter >= 800) clearInterval(inter)
+
+    counter++
+  }, 1)
+}
+
+const moveGoku = () => {
   window.addEventListener("keydown", e => {
-    console.log(e.keyCode);
-    let spawn = document.querySelector(".spawn")
+    let goku = document.querySelector(".goku")
     if(e.keyCode === 65) {
-      let left = spawn.offsetLeft
-      spawn.style.left = `${left-5}px`
+      let left = goku.offsetLeft
+      goku.style.left = `${left-5}px`
     } else if (e.keyCode === 69) {
-      let top = spawn.offsetTop
-      spawn.style.top = `${top-5}px`
+      let top = goku.offsetTop
+      goku.style.top = `${top-5}px`
+      jump(goku)
     } else if (e.keyCode === 70) {
-      let left = spawn.offsetLeft
-      spawn.style.left = `${left+5}px`
+      let left = goku.offsetLeft
+      goku.style.left = `${left+5}px`
     } else if (e.keyCode === 68) {
-      let top = spawn.offsetTop
-      spawn.style.top = `${top+5}px`
+      let top = goku.offsetTop
+      goku.style.top = `${top+5}px`
     } else if (e.keyCode === 16) {
       spawnAttack()
     }
@@ -113,3 +131,49 @@ const spawnAttack = () => {
 
 moveGoku()
 moveSpawn()
+
+
+
+// const moveGoku = () => {
+//   window.addEventListener("keydown", e => {
+//     let goku = document.querySelector(".goku")
+//     window.e = e
+//     if(e.keyCode === 37) {
+//       let left = goku.offsetLeft
+//       goku.style.left = `${left-5}px`
+//     } else if (e.keyCode === 38) {
+//       let top = goku.offsetTop
+//       goku.style.top = `${top-5}px`
+//     } else if (e.keyCode === 39) {
+//       let left = goku.offsetLeft
+//       goku.style.left = `${left+5}px`
+//     } else if (e.keyCode === 40) {
+//       let top = goku.offsetTop
+//       goku.style.top = `${top+5}px`
+//     } else if (e.keyCode === 32) {
+//       gokuAttack()
+//     }
+//   })
+
+
+// const moveSpawn = () => {
+//   window.addEventListener("keydown", e => {
+//     console.log(e.keyCode);
+//     let spawn = document.querySelector(".spawn")
+//     if(e.keyCode === 65) {
+//       let left = spawn.offsetLeft
+//       spawn.style.left = `${left-5}px`
+//     } else if (e.keyCode === 69) {
+//       let top = spawn.offsetTop
+//       spawn.style.top = `${top-5}px`
+//     } else if (e.keyCode === 70) {
+//       let left = spawn.offsetLeft
+//       spawn.style.left = `${left+5}px`
+//     } else if (e.keyCode === 68) {
+//       let top = spawn.offsetTop
+//       spawn.style.top = `${top+5}px`
+//     } else if (e.keyCode === 16) {
+//       spawnAttack()
+//     }
+//   })
+// }
