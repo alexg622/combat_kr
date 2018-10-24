@@ -2,6 +2,10 @@ const gokuStartCords = document.querySelector(".goku").getBoundingClientRect()
 const spawnStartCords = document.querySelector(".spawn").getBoundingClientRect()
 const container = document.querySelector(".container")
 const windowWidth = window.innerWidth
+let gokuAmmo = 5
+let gokuAmmoCounter = true
+let spawnAmmoCounter = true
+let spawnAmmo = 5
 
 
 
@@ -24,7 +28,16 @@ const moveSpawn = () => {
       let top = spawn.offsetTop
       spawn.style.top = `${top+5}px`
     } else if (e.keyCode === 32) {
-      gokuAttack()
+      if (spawnAmmo > 0 && spawnAmmoCounter === true) {
+        spawnAmmo -= 1
+        gokuAttack()
+      } else if (spawnAmmoCounter === true && spawnAmmo < 1){
+        spawnAmmoCounter = false
+        setTimeout(() => {
+          spawnAmmo = 5
+          spawnAmmoCounter = true
+        }, 5000)
+      }
     }
   })
 }
@@ -62,7 +75,16 @@ const moveGoku = () => {
       let top = goku.offsetTop
       goku.style.top = `${top+5}px`
     } else if (e.keyCode === 16) {
-      spawnAttack()
+      if (gokuAmmo > 0 && gokuAmmoCounter === true) {
+        gokuAmmo -= 1
+        spawnAttack()
+      } else if(gokuAmmoCounter === true && gokuAmmo < 1){
+        gokuAmmoCounter = false
+        setTimeout(() => {
+          gokuAmmo = 5
+          gokuAmmoCounter = true
+        }, 5000)
+      }
     }
   })
 }
